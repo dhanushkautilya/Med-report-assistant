@@ -68,12 +68,11 @@ The graph design makes future multi-step processing easy.
 
 
 ## 🛠️ Installation & Setup
-
- 1️⃣ Clone the repository
 ```bash
+ 1️⃣ Clone the repository
 git clone https://github.com/<dhanushkautilya>/med-report-assistant.git
-cd med-report-assistant
 cd Main
+cd med-report-assistant
 2️⃣ Create virtual environment
 python3 -m venv .venv
 source .venv/bin/activate

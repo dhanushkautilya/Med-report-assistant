@@ -1,40 +1,50 @@
-# 🩺 Medical Report Summary Assistant  
-### AI-powered clinical document analyzer using **LangChain**, **LangGraph**, **OpenAI**, and **Streamlit**
+# 🩺 Medical Report Assistant  
+### AI-powered clinical report generator using **LangChain**, **LangGraph**, **OpenAI**, and **Streamlit** with RAG for guideline integration
 
-The **Medical Report Summary Assistant** is an intelligent, local web application that helps clinicians and researchers quickly understand long or complex medical documents.  
-Upload a **PDF medical report** or **paste clinical text**, and the app generates a concise, physician-friendly summary that you can read instantly or download for later use.
+The **Medical Report Assistant** is an intelligent, local web application that helps clinicians generate comprehensive, guideline-compliant medical reports from patient data.  
+Upload a **PDF medical report** or **paste clinical text**, and the app generates a structured report incorporating relevant medical guidelines via RAG (Retrieval-Augmented Generation).
 
 Built with:
 - **LangChain** → prompt orchestration & LLM pipeline  
 - **LangGraph** → workflow graph for controlled multi-step processing  
+- **FAISS** → vector search for guideline retrieval
 - **Streamlit** → simple, clean web interface for upload & display  
-- **OpenAI LLMs** → high-quality text summarization  
+- **OpenAI LLMs** → high-quality text generation  
 
-> ⚠️ *This tool does NOT provide medical advice, diagnosis, or treatment recommendations. It only restructures and summarizes existing text.*
+> ⚠️ *This tool does NOT provide medical advice, diagnosis, or treatment recommendations. It only restructures and summarizes existing text with guideline references.*
 
 ---
 
 ## 🚀 Features
 
-### 🔹 1. Intelligent Medical Summarization
-- Extracts the key details from clinical reports:
-  - Presenting problem  
-  - Relevant history  
-  - Important findings  
-  - Mentioned diagnoses  
-  - Follow-up items or next steps  
+### 🔹 1. Intelligent Medical Report Generation
+- Generates detailed, structured reports from clinical text:
+  - Patient Presentation  
+  - History  
+  - Physical Exam  
+  - Diagnostic Findings  
+  - Impressions/Diagnoses  
+  - Treatment Plan  
+  - Follow-up  
 
 ### 🔹 2. PDF Extraction
 - Upload **any text-based PDF**
 - Text is automatically extracted and passed to the AI engine
 
-### 🔹 3. Simple, Local Web UI
+### 🔹 3. RAG (Retrieval-Augmented Generation) with Medical Guidelines
+- **Guideline Extraction**: Extracts and embeds text from medical guideline PDFs (e.g., ACC/AHA ACS guidelines) using PyPDF and OpenAI embeddings.
+- **Smart Retrieval**: Uses FAISS vector search to retrieve relevant guideline sections based on the input report.
+- **Guideline Incorporation**: Incorporates evidence-based recommendations into generated reports (e.g., antiplatelets for ACS).
+- **Difference**: With RAG, reports are guideline-compliant and precise; without, they are generic summaries.
+
+### 🔹 4. Simple, Local Web UI
 - Built with Streamlit
 - Upload a file or paste text
-- Click one button → Get summary
+- Click one button → Get report
 - Download output as a `.txt`
+- Debug view shows retrieved guidelines
 
-### 🔹 4. LangChain + LangGraph Pipeline
+### 🔹 5. LangChain + LangGraph Pipeline
 - Modular graph-based architecture  
 - Easy to extend with additional nodes:
   - Medication extraction  
@@ -53,15 +63,18 @@ Built with:
 
 - **LangGraph Workflow (`pipeline.py`)**
   - 2-node graph:
-    - `ingest` → loads text
-    - `summarize` → calls LangChain summarizer chain  
+    - `retrieve` → searches FAISS for relevant guidelines
+    - `generate` → calls LangChain generation chain with retrieved guidelines  
 
 - **LangChain Prompt + Model**
-  - GPT-4.1-mini (or any LLM you configure)
-  - Clinical-safe summarization prompt
+  - GPT-4o-mini (or any LLM you configure)
+  - Guideline-aware report generation prompt
 
 - **PDF Utilities (`pdf_utils.py`)**
-  - Extracts text from PDF uploads
+  - Extracts text from PDF uploads and guidelines
+
+- **Guidelines (`guidelines.txt`)**
+  - Embedded medical guidelines for RAG retrieval
 
 The graph design makes future multi-step processing easy.
 
@@ -95,4 +108,4 @@ Your browser will open at:
 http://localhost:8501
 
 
-Upload a document → generate summary → download result.
+Upload a document → generate guideline-compliant report → download result.

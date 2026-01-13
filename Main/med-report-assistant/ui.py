@@ -2,16 +2,15 @@
 import streamlit as st
 
 from app.pdf_utils import extract_text_from_pdf_bytes
-from app.pipeline import summarize_report_text
+from app.pipeline import generate_report_text
 
 
 st.set_page_config(page_title="Medical Report Summary Assistant", layout="centered")
 
-st.title("🩺 Medical Report Summary Assistant")
+st.title("🩺 Medical Report Generation Assistant")
 st.caption(
-    "Upload a medical report or patient summary and generate a concise, "
-    "clinician-friendly overview. This tool is for information organization only "
-    "and does not provide medical advice."
+    "Upload a medical report or patient summary and generate a comprehensive report following ACC/AHA guidelines. "
+    "This tool is for information organization only and does not provide medical advice."
 )
 
 st.markdown("### 1. Upload a document or paste text")
@@ -27,7 +26,7 @@ text_input = st.text_area(
     placeholder="Paste clinical note, discharge summary, or radiology report text...",
 )
 
-summarize_button = st.button("⚙️ Generate Summary")
+summarize_button = st.button("⚙️ Generate Report")
 
 summary_result = None
 
@@ -35,7 +34,7 @@ if summarize_button:
     if uploaded_file is None and not text_input.strip():
         st.error("Please upload a PDF or paste some text.")
     else:
-        with st.spinner("Analyzing report..."):
+        with st.spinner("Generating report..."):
             # Prefer PDF if provided; otherwise use text input
             if uploaded_file is not None:
                 try:
@@ -51,19 +50,19 @@ if summarize_button:
                 report_text = text_input
 
             if report_text.strip():
-                summary_result = summarize_report_text(report_text)
+                summary_result = generate_report_text(report_text)
             else:
                 summary_result = "No usable text found in the provided input."
 
 if summary_result:
-    st.markdown("### 2. Summary for clinician")
+    st.markdown("### 2. Generated Report")
     st.write(summary_result)
 
-    st.markdown("### 3. Download summary")
+    st.markdown("### 3. Download report")
     st.download_button(
         label="💾 Download as .txt",
         data=summary_result,
-        file_name="medical_report_summary.txt",
+        file_name="medical_report.txt",
         mime="text/plain",
     )
 

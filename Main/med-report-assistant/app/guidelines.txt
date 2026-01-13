@@ -1,0 +1,224 @@
+# 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines
+
+## Abstract
+
+### Methods:
+
+A comprehensive literature search was conducted from July 2023 to April 2024.
+Clinical studies, systematic reviews and meta-analyses, and other evidence
+conducted on human participants were identified that were published in English from
+MEDLINE (through PubMed), EMBASE, the Cochrane Library, Agency for Healthcare
+Research and Quality, and other selected databases relevant to this guideline.
+
+### Structure:
+
+Many recommendations from previously published guidelines have been updated with
+new evidence, and new recommendations have been created when supported by
+published data.
+
+## Preamble
+
+### Intended Use
+
+Clinical practice guidelines provide recommendations applicable to patients with
+or at risk of developing cardiovascular disease (CVD). The focus is on medical
+practice in the United States, but these guidelines are relevant to patients
+throughout the world. Although guidelines may be used to inform regulatory or payer
+decisions, the intent is to improve quality of care and align with patients'
+interests. Guidelines are intended to define practices meeting the needs of
+patients in most, but not all, circumstances and should not replace clinical judgment.
+
+### Methodology and Modernization
+
+recommendations, a brief synopsis, recommendation-specific supportive text, and, when
+appropriate, flow diagrams or additional tables. Hyperlinked references are
+provided for each modular knowledge chunk to facilitate quick access and review.
+
+In recognition of the importance of cost–value considerations, in certain
+guidelines, when appropriate and feasible, an assessment of value for a drug, device,
+or intervention may be performed in accordance with the ACC/AHA methodology.2
+
+To ensure that guideline recommendations remain current, new data will be
+reviewed on an ongoing basis by the writing committee and staff. When applicable,
+recommendations will be updated with new evidence, or new recommendations will be
+created when supported by published evidence-based data. Going forward, targeted
+
+### Selection of Writing Committee Members
+
+The Joint Committee strives to ensure that the guideline writing committee
+contains requisite content expertise and is representative of the broader
+cardiovascular community by selection of experts across a spectrum of backgrounds,
+representing different geographic regions, sexes, races, ethnicities, intellectual
+perspectives/biases, and clinical practice settings. Organizations and professional
+societies with related interests and expertise are invited to participate as
+collaborators.
+
+### Relationships With Industry and Other Entities
+
+The ACC and AHA have rigorous policies and methods to ensure that documents are
+developed without bias or improper influence. The complete policy on
+relationships with industry and other entities (RWI) can be found at [https://www.acc.org/guidelines/about-guidelines-and-clinical-documents/relationships-with-industry-policy](https://www.acc.org/guidelines/about-guidelines-and-clinical-documents/relationships-with-industry-policy). Appendix 1 of the guideline lists writing committee members’ comprehensive and relevant
+RWI; for the purposes of full transparency, comprehensive and relevant disclosure
+information for the Joint Committee is also available at [https://www.acc.org/guidelines/about-guidelines-and-clinical-documents/guidelines-and-documents-task-forces](https://www.acc.org/guidelines/about-guidelines-and-clinical-documents/guidelines-and-documents-task-forces).
+
+### Evidence Review and Evidence Review Committees
+
+authoritative systematic review, feasibility of defining the benefit and risk in a time
+frame consistent with the writing of a guideline, relevance to a substantial
+number of patients, and likelihood that the findings can be translated into
+actionable recommendations. Evidence review committee members may include methodologists,
+epidemiologists, clinicians, and biostatisticians. Recommendations developed by
+the writing committee on the basis of the systematic review are marked “SR.”
+
+### Guideline-Directed Medical Therapy
+
+The term guideline-directed medical therapy encompasses clinical evaluation,
+diagnostic testing, and both pharmacological and procedural treatments. For these
+and all recommended drug treatment regimens, the reader should confirm dosage
+with product insert material and evaluate for contraindications and interactions.
+Recommendations are limited to drugs, devices, and treatments approved for
+clinical use in the United States.
+
+## 1. Introduction
+
+### 1.1. Methodology and Evidence Review
+
+cardiovascular diseases; coronary artery disease (CAD); coronary syndrome; emergency
+medical services; fibrinolytic agents; hemorrhage; major adverse cardiovascular
+events (MACE); morphine; myocardial infarction; non–ST-elevation myocardial
+infarction (NSTEMI); percutaneous coronary intervention (PCI); prehospital;
+revascularization; risk; ST-elevation myocardial infarction (STEMI); time factors;
+treatment outcome.
+
+Additional relevant studies, which were published through April 2024 during the
+guideline writing process, were also considered by the writing committee and
+added to the evidence tables when appropriate. The final evidence tables summarize
+the evidence used by the writing committee to formulate recommendations.
+References selected and published in the present document are representative and not
+all-inclusive.
+
+### 1.4. Scope of the Guideline
+
+This guideline focuses on the management of type 1 AMI. The diagnostic
+evaluation of chest pain and the management of type 2 MI, SCAD, and MINOCA are covered in
+separate documents.5–8
+
+AMI indicates acute myocardial infarction; CABG, coronary artery bypass
+grafting; MI, myocardial infarction; MINOCA, MI with nonobstructive coronary artery
+disease; PCI, percutaneous coronary intervention; and SCAD, spontaneous coronary
+artery dissection.
+
+Progressive lipid accumulation and inflammation within an atherosclerotic plaque
+
+### 1.5. Class of Recommendation and Level of Evidence
+
+The COR indicates the strength of recommendation, encompassing the estimated
+magnitude and certainty of benefit in proportion to risk. The LOE rates the quality
+of scientific evidence supporting the intervention on the basis of the type,
+quantity, and consistency of data from clinical trials and other sources (Table 2).1
+
+### 1.6. Abbreviations
+
+ACEi angiotensin-converting enzyme inhibitor
+ACS acute coronary syndromes
+AF atrial fibrillation
+AMI acute myocardial infarction
+ARB angiotensin receptor blocker
+ASCVD atherosclerotic cardiovascular disease
+CABG coronary artery bypass grafting
+CAD coronary artery disease
+CCD chronic coronary disease
+CDP clinical decision pathway
+CICU cardiac intensive care unit
+CR cardiac rehabilitation
+cTn cardiac troponin
+CVD cardiovascular disease
+DAPT dual antiplatelet therapy
+
+DOAC direct oral anticoagulant
+ECG electrocardiogram
+FDA US Food and Drug Administration
+FFR fractional flow reserve
+FMC first medical contact
+GLP-1 glucagon-like peptide-1
+HF heart failure
+hs-cTn high-sensitivity cardiac troponin
+IABP intra-aortic balloon pump
+ICD implantable cardioverter-defibrillator
+IVUS intravascular ultrasound
+LDL low-density lipoprotein
+LDL-C low-density lipoprotein cholesterol
+LV left ventricular
+LVEF left ventricular ejection fraction
+
+RCT randomized controlled trial
+ROSC return of spontaneous circulation
+SGLT-2 sodium-glucose cotransporter-2
+STEMI ST-segment elevation myocardial infarction
+UFH unfractionated heparin
+VA-ECMO venoarterial extracorporeal membrane oxygenation
+
+## 2. Overview of ACS
+
+### 2.1. Definition and Classification of ACS
+
+presumed to now have more stable coronary disease has been described in the 2023
+AHA/ACC/ACCP/ASPC/NLA/PCNA Chronic Coronary Disease Guideline.10
+
+## 4. Standard Medical Therapies for STEMI and NSTE-ACS
+
+### 4.5. Lipid Management
+
+Synopsis
+
+The current recommendations focus on patients with recent (ie, within 12 months)
+ACS. The 2023 AHA/ACC/ACCP/ASPC/NLA/PCNA CCD guideline provides more detailed
+
+## 10. In-hospital Issues in the Management of ACS
+
+### 10.5. Discharge Planning
+
+#### 10.5.1. Patient Education
+
+EXPAND TABLEAHA indicates American Heart Association; and CR, cardiac rehabilitation.
+
+## Presidents and Staff
+
+American College of Cardiology
+
+Cathleen Biga, MSN, FACC, President
+
+Cathleen C. Gates, Chief Executive Officer
+
+Richard J. Kovacs, MD, MACC, Chief Medical Officer
+
+Justine Varieur Turco, Divisional Vice President, Scientific Publications and
+Guidelines
+
+Mindy J. Saraco, MHA, Director, Clinical Policy and Guidelines
+
+Grace D. Ronan, Senior Production and Operations Manager, Clinical Policy
+Publications
+
+Leah Patterson, Project Manager, Clinical Content Development
+
+American College of Cardiology/American Heart Association
+
+Thomas S.D. Getchius, National Senior Director, Guidelines
+
+Abdul R. Abdullah, MD, Director, Guideline Science and Methodology
+
+American Heart Association
+
+## References
+
+### Preamble
+
+1. Committee on Standards for Systematic Reviews of Comparitive Effectiveness
+Research, Institute of Medicine (US). Finding what works in healthcare: standards for
+systematic reviews. National Academies Press; 2011. Go to Citation |[Google Scholar](https://scholar.google.com/scholar_lookup?title=Finding+what+works+in+healthcare%3A+standards+for+systematic+reviews.&publication_year=2011&journal=National+Academies+Press) 2. Anderson JL, Heidenreich PA, Barnett PG, et al. ACC/AHA statement on cost/value
+methodology in clinical practice guidelines and performance measures: a report of the
+American College of Cardiology/American Heart Association Task Force on
+Performance Measures and Task Force on Practice Guidelines. Circulation. 2014;129:2329–2345. Go to Citation |[Crossref](https://www.ahajournals.org/servlet/linkout?suffix=e_1_3_2_2_3_2&dbid=4&doi=10.1161%2FCIR.0000000000001309&key=10.1161%2FCIR.0b013e3182742c84&site=aha-site) |[PubMed](https://pubmed.ncbi.nlm.nih.gov/24677315/) |[Google Scholar](https://scholar.google.com/scholar_lookup?title=ACC%2FAHA+statement+on+cost%2Fvalue+meth...
+
+(This is a condensed version; full guidelines available at the DOI.)

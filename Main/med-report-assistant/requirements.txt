@@ -4,4 +4,6 @@ langgraph
 streamlit
 pypdf
 python-dotenv
+faiss-cpu
+langchain-community
 

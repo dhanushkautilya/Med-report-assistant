@@ -4,9 +4,12 @@ from pathlib import Path
 from typing import TypedDict
 
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.vectorstores import FAISS
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.docstore.document import Document
 
 from langgraph.graph import StateGraph
 
@@ -28,37 +31,59 @@ if not OPENAI_API_KEY:
         "OPENAI_API_KEY=sk-your-key-here"
     )
 
+# ---- Load and process guidelines for RAG ---------------------------
+
+embeddings = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
+
+guidelines_path = PROJECT_ROOT / "app" / "guidelines.txt"
+with open(guidelines_path, "r") as f:
+    guidelines_text = f.read()
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+docs = text_splitter.split_text(guidelines_text)
+documents = [Document(page_content=doc) for doc in docs]
+
+vectorstore = FAISS.from_documents(documents, embeddings)
+
 # ---- 2) LangChain LLM + prompt ------------------------------------------
 
 llm = ChatOpenAI(
-    model="gpt-4.1-mini",
+    model="gpt-4o-mini",
     temperature=0.1,
     api_key=OPENAI_API_KEY,  # pass the key explicitly
 )
 
-summary_prompt = ChatPromptTemplate.from_template(
+report_prompt = ChatPromptTemplate.from_template(
     """
-You are a clinical documentation assistant helping a physician review a medical report.
+You are a clinical documentation assistant helping a physician generate a comprehensive medical report from patient data.
 
 Task:
-- Summarize the report clearly and concisely for a busy doctor.
-- Include: presenting problem, key history, important findings, impressions/diagnoses if clearly stated, and any mentioned follow-up.
-- Do NOT invent diagnoses or give treatment recommendations.
-- Only restate information that appears in the report.
+- Generate a detailed medical report based on the provided report text.
+- Incorporate relevant recommendations from the Retrieved Guidelines Context where applicable (e.g., for cardiovascular conditions like ACS). If the guidelines are not directly relevant, generate a standard clinical report.
+- Include sections such as: Patient Presentation, History, Physical Exam, Diagnostic Findings, Impressions/Diagnoses, Treatment Plan, and Follow-up.
+- Adhere to evidence-based practices from the retrieved context when possible.
+- Do NOT invent information not present in the report text.
+- Summarize and structure the provided text into a coherent medical report.
+
+Retrieved Guidelines Context:
+{retrieved_guidelines}
 
 Medical report text:
-```{report_text}```
+{report_text}
+
+Generated Report:
 """
 )
 
-summary_chain = summary_prompt | llm | StrOutputParser()
+report_chain = report_prompt | llm | StrOutputParser()
 
 
 # ---- 3) Graph state ------------------------------------------------------
 
 class GraphState(TypedDict, total=False):
     report_text: str
-    summary: str
+    retrieved_guidelines: str
+    generated_report: str
 
 
 # ---- 4) Node functions ---------------------------------------------------
@@ -68,14 +93,29 @@ def ingest_node(state: GraphState) -> GraphState:
     return state
 
 
-def summarize_node(state: GraphState) -> GraphState:
-    report_text = state.get("report_text", "") or ""
+def retrieve_node(state: GraphState) -> GraphState:
+    report_text = state.get("report_text", "")
     if not report_text.strip():
-        state["summary"] = "No text found in document."
+        state["retrieved_guidelines"] = "No report text provided."
         return state
 
-    summary = summary_chain.invoke({"report_text": report_text})
-    state["summary"] = summary
+    # Retrieve relevant guidelines based on the report text
+    docs = vectorstore.similarity_search(report_text, k=10)  # Increased from 5 to 10 for more context
+    retrieved = "\n\n".join([doc.page_content for doc in docs])
+    state["retrieved_guidelines"] = retrieved
+    return state
+
+
+def generate_report_node(state: GraphState) -> GraphState:
+    report_text = state.get("report_text", "") or ""
+    retrieved_guidelines = state.get("retrieved_guidelines", "")
+    if not report_text.strip():
+        state["generated_report"] = "No text found in document."
+        return state
+
+    generated_report = report_chain.invoke({"report_text": report_text, "retrieved_guidelines": retrieved_guidelines})
+    # Include retrieved guidelines in the output for debugging
+    state["generated_report"] = f"Retrieved Guidelines:\n{retrieved_guidelines}\n\nGenerated Report:\n{generated_report}"
     return state
 
 
@@ -85,11 +125,13 @@ def build_graph():
     g = StateGraph(GraphState)
 
     g.add_node("ingest", ingest_node)
-    g.add_node("summarize", summarize_node)
+    g.add_node("retrieve", retrieve_node)
+    g.add_node("generate_report", generate_report_node)
 
     g.set_entry_point("ingest")
-    g.add_edge("ingest", "summarize")
-    g.set_finish_point("summarize")
+    g.add_edge("ingest", "retrieve")
+    g.add_edge("retrieve", "generate_report")
+    g.set_finish_point("generate_report")
 
     return g.compile()
 
@@ -97,7 +139,7 @@ def build_graph():
 graph_app = build_graph()
 
 
-def summarize_report_text(report_text: str) -> str:
+def generate_report_text(report_text: str) -> str:
     initial_state: GraphState = {"report_text": report_text}
     final_state: GraphState = graph_app.invoke(initial_state)
-    return final_state.get("summary", "No summary produced.")
+    return final_state.get("generated_report", "No report generated.")

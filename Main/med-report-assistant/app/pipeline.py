@@ -55,15 +55,15 @@ llm = ChatOpenAI(
 
 report_prompt = ChatPromptTemplate.from_template(
     """
-You are a clinical documentation assistant helping a physician generate a comprehensive medical report from patient data.
+You are a clinical documentation assistant helping a physician generate a comprehensive medical report for a patient with acute coronary syndromes (ACS).
 
 Task:
 - Generate a detailed medical report based on the provided report text.
-- Incorporate relevant recommendations from the Retrieved Guidelines Context where applicable (e.g., for cardiovascular conditions like ACS). If the guidelines are not directly relevant, generate a standard clinical report.
+- CRITICALLY IMPORTANT: You MUST incorporate and reference the relevant recommendations from the Retrieved Guidelines Context below (ACC/AHA ACS Guideline at a Glance). Do not generate generic advice—base your treatment plans, diagnoses, and follow-up directly on the guidelines provided.
 - Include sections such as: Patient Presentation, History, Physical Exam, Diagnostic Findings, Impressions/Diagnoses, Treatment Plan, and Follow-up.
-- Adhere to evidence-based practices from the retrieved context when possible.
-- Do NOT invent information not present in the report text.
-- Summarize and structure the provided text into a coherent medical report.
+- Adhere strictly to guideline-directed medical therapy and best practices from the retrieved context.
+- Do NOT invent information not present in the report text or guidelines.
+- If the guidelines mention specific recommendations (e.g., for antiplatelets, PCI, risk stratification), explicitly include them in the report.
 
 Retrieved Guidelines Context:
 {retrieved_guidelines}

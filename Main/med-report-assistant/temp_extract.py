@@ -3,7 +3,7 @@ from app.pdf_utils import extract_text_from_pdf_bytes
 import os
 
 # PDF is in the project root with this name
-pdf_path = "rao-et-al-2025-2025-acc-aha-acep-naemsp-scai-guideline-for-the-management-of-patients-with-acute-coronary-syndromes-a.pdf"
+pdf_path = "kumbhani-et-al-2025-2025-acute-coronary-syndromes-guideline-at-a-glance.pdf"
 if not os.path.exists(pdf_path):
     print(f"PDF file '{pdf_path}' not found.")
     exit(1)
